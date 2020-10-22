@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour
 
     float SpawnCarTime = 0f;
 
+    public Transform[] SpawnPoints;
+
     float Countdown = 3f;
 
     void Start()
@@ -42,6 +44,11 @@ public class Spawner : MonoBehaviour
 
     void SpawnCar()
     {
-        Instantiate(Car);
+        // Random car generator for spawns
+        int RandomCar = Random.Range(0, SpawnPoints.Length);
+        Transform SpawnPoint = SpawnPoints[RandomCar];
+
+
+        Instantiate(Car, SpawnPoint.position, SpawnPoint.rotation);
     }    
 }
