@@ -6,13 +6,10 @@ public class Spawner : MonoBehaviour
 {
 
     public GameObject Car;
-
+    public GameObject Car2;
     public float SpawnDelay = .4f;
-
     float SpawnCarTime = 0f;
-
     public Transform[] SpawnPoints;
-
     float Countdown = 3f;
 
     void Start()
@@ -34,6 +31,7 @@ public class Spawner : MonoBehaviour
     
     void Update()
     {
+        // Spawn car after a certain amount of time
         if (SpawnCarTime <= Time.time)
         {
             SpawnCar();
@@ -42,13 +40,27 @@ public class Spawner : MonoBehaviour
         
     }
 
+
     void SpawnCar()
     {
         // Random car generator for spawns
         int RandomCar = Random.Range(0, SpawnPoints.Length);
         Transform SpawnPoint = SpawnPoints[RandomCar];
 
+        // To choose which car that will spawn so its more random.
+        int i = Random.Range(1, 6);
+        GameObject ChosenCar;
+        if (i > 3)
+        {
+            ChosenCar = Car;
+        }
+        else
+        {
+            ChosenCar = Car2;
+        }
 
-        Instantiate(Car, SpawnPoint.position, SpawnPoint.rotation);
+
+        Instantiate(ChosenCar, SpawnPoint.position, SpawnPoint.rotation);
+        
     }    
 }

@@ -11,7 +11,20 @@ public class Goal : MonoBehaviour
         // Winning gets 1 point
         Score.WinCount += 1;
         // Restarts after winning
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (Score.WinCount < 2)
+        {
+            SceneManager.LoadScene("2nd Level");
+        }
+        else if (Score.WinCount >= 3)
+        {
+            SceneManager.LoadScene("3rd Level");
+        }
+        else 
+        {
+           SceneManager.LoadScene("ChickenFeet");
+        }
+        
+            
     }
 
 

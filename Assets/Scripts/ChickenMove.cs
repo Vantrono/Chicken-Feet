@@ -36,7 +36,8 @@ public class ChickenMove : MonoBehaviour
             //Make it Zero when you lose
             Score.WinCount = 0;
             // Restart game after losing
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
+            SceneManager.LoadScene("ChickenFeet");
         }
     }
 }
